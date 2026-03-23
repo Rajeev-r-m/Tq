@@ -29,15 +29,14 @@ const Hero = () => {
                 className="absolute inset-0 z-0"
             >
                 <video
-                    // src="https://pixabay.com/videos/city-downtown-midtown-cityscape-219339/"
-                    src="/219339.mov"
+                    src="/219339_tiny.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-center opacity-70"
                 />
-                <div className="absolute inset-0 bg-black/65 z-10"></div>
+                <div className="absolute inset-0 bg-black/50 z-10"></div>
             </motion.div>
 
             {/* Main Text Content with Entrance & Scroll Animation */}
@@ -88,8 +87,8 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 + (index * 0.1), duration: 0.2 }}
-                        whileHover={{ y: -8, backgroundColor: "rgba(255,255,255,0.15)" }}
-                        className="flex flex-col items-center justify-center bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl px-4 py-4 min-w-[130px] sm:min-w-[160px] shadow-2xl transition-colors duration-300 group"
+                        whileHover={{ y: -8 }}
+                        className="flex flex-col items-center justify-center bg-white/5 hover:bg-white/15 backdrop-blur-lg border border-white/10 rounded-xl px-4 py-4 min-w-[130px] sm:min-w-[160px] shadow-2xl transition-colors duration-300 group"
                     >
                         <span className="text-orange-500 font-bold text-lg sm:text-xl mb-1 group-hover:text-orange-400 transition-colors uppercase tracking-wider">
                             {card.titleOrange}
