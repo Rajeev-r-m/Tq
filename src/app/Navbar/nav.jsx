@@ -6,6 +6,8 @@ import logoImg from '../../LogoandImage/TEVQuest-Official-New-Logo.png';
 
 const Nav = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isAboutOpen, setIsAboutOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -46,9 +48,48 @@ const Nav = () => {
                 } font-bold tracking-[0.2em]`}>
                     <a href="#home" className="hover:text-[#FF4F00] transition-colors">HOME</a>
                     <span className="opacity-20">|</span>
-                    <a href="#company" className="hover:text-[#FF4F00] transition-colors">ABOUT</a>
+                    
+                    <div className="relative group py-2">
+                        <button className="hover:text-[#FF4F00] transition-colors flex items-center gap-1 focus:outline-none uppercase">
+                            ABOUT TEVQUEST
+                            <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-48 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col z-120 translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                            {[
+                                'Our Company', 
+                                'Our Leadership'
+                            ].map((item, idx, arr) => (
+                                <a key={idx} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className={`px-5 py-3.5 text-white/90 hover:text-[#FF4F00] hover:bg-white/10 transition-colors text-[14px] font-medium text-left w-full ${idx !== arr.length - 1 ? 'border-b border-white/20' : ''}`}>
+                                    {item}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
                     <span className="opacity-20">|</span>
-                    <a href="#services" className="hover:text-[#FF4F00] transition-colors">PRACTICE AREAS</a>
+                    
+                    <div className="relative group py-2">
+                        <button className="hover:text-[#FF4F00] transition-colors flex items-center gap-1 focus:outline-none uppercase">
+                            PRACTICE AREAS
+                            <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-80 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col z-120 translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                            {[
+                                'Techno Economic Feasibility Study', 
+                                'Valuation of Tangible Asset', 
+                                'Valuation of Securities', 
+                                'Risk Analysis', 
+                                'Compliance and Regulatory Evaluation', 
+                                'Real Estate Advisory', 
+                                'Auditing'
+                            ].map((item, idx, arr) => (
+                                <a key={idx} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className={`px-5 py-3.5 text-white/90 hover:text-[#FF4F00] hover:bg-white/10 transition-colors text-[14px] font-medium text-left w-full ${idx !== arr.length - 1 ? 'border-b border-white/20' : ''}`}>
+                                    {item}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
                     <span className="opacity-20">|</span>
                     <a href="#news" className="hover:text-[#FF4F00] transition-colors">NEWS</a>
                     
@@ -87,8 +128,70 @@ const Nav = () => {
 
                         <nav className="flex flex-col items-center space-y-6 text-white text-xl font-black tracking-[0.3em]">
                             <a href="#home" onClick={closeMenu} className="hover:text-[#FF4F00] transition-colors">HOME</a>
-                            <a href="#company" onClick={closeMenu} className="hover:text-[#FF4F00] transition-colors">ABOUT</a>
-                            <a href="#services" onClick={closeMenu} className="hover:text-[#FF4F00] transition-colors">PRACTICE AREAS</a>
+                            
+                            <div className="flex flex-col items-center w-full">
+                                <button 
+                                    onClick={() => setIsAboutOpen(!isAboutOpen)} 
+                                    className="hover:text-[#FF4F00] transition-colors flex items-center gap-2 focus:outline-none uppercase"
+                                >
+                                    ABOUT TEVQUEST
+                                    <svg className={`w-6 h-6 transition-transform duration-300 ${isAboutOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <AnimatePresence>
+                                    {isAboutOpen && (
+                                        <motion.div 
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            className="flex flex-col items-center mt-3 overflow-hidden w-full border border-white/10 rounded-xl bg-black/50 backdrop-blur-xl"
+                                        >
+                                            {[
+                                                'Our Company', 
+                                                'Our Leadership'
+                                            ].map((item, idx, arr) => (
+                                                <a key={idx} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} onClick={closeMenu} className={`text-sm text-white/90 hover:text-[#FF4F00] hover:bg-white/10 transition-colors font-medium text-center w-full py-3 px-4 ${idx !== arr.length - 1 ? 'border-b border-white/20' : ''}`}>
+                                                    {item}
+                                                </a>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+
+                            <div className="flex flex-col items-center w-full">
+                                <button 
+                                    onClick={() => setIsServicesOpen(!isServicesOpen)} 
+                                    className="hover:text-[#FF4F00] transition-colors flex items-center gap-2 focus:outline-none uppercase"
+                                >
+                                    PRACTICE AREAS
+                                    <svg className={`w-6 h-6 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <AnimatePresence>
+                                    {isServicesOpen && (
+                                        <motion.div 
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            className="flex flex-col items-center mt-3 overflow-hidden w-full border border-white/10 rounded-xl bg-black/50 backdrop-blur-xl"
+                                        >
+                                            {[
+                                                'Techno Economic Feasibility Study', 
+                                                'Valuation of Tangible Asset', 
+                                                'Valuation of Securities', 
+                                                'Risk Analysis', 
+                                                'Compliance and Regulatory Evaluation', 
+                                                'Real Estate Advisory', 
+                                                'Auditing'
+                                            ].map((item, idx, arr) => (
+                                                <a key={idx} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} onClick={closeMenu} className={`text-sm text-white/90 hover:text-[#FF4F00] hover:bg-white/10 transition-colors font-medium text-center w-full py-3 px-4 ${idx !== arr.length - 1 ? 'border-b border-white/20' : ''}`}>
+                                                    {item}
+                                                </a>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+
                             <a href="#news" onClick={closeMenu} className="hover:text-[#FF4F00] transition-colors">NEWS</a>
                             <div className="w-12 h-1 bg-[#FF4F00] my-4" />
                             <a href="#contact" onClick={closeMenu} className="bg-[#FF4F00] px-10 py-4 text-sm tracking-widest hover:bg-white hover:text-[#0B1D33] transition-all">

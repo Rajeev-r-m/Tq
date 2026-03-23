@@ -101,7 +101,7 @@ const WhyChooseUs = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-white text-3xl md:text-5xl font-serif mb-4 uppercase tracking-tighter">
+          <h2 className="text-white text-3xl md:text-5xl font-bold mb-4 uppercase tracking-tighter">
             Our Commitment to <span className="text-[#FF4F00]">Excellence</span>
           </h2>
           <div className="w-24 h-[2px] bg-[#003399] mx-auto mb-6"></div>

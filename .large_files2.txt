@@ -1,3 +1,0 @@
-﻿D:\Vistar\PROJECT\tevquest\.next\dev\cache\turbopack\0ca967b8\00001753.sst
-D:\Vistar\PROJECT\tevquest\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node
-D:\Vistar\PROJECT\tevquest\public\219339.mov
